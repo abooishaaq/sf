@@ -242,16 +242,12 @@ Proof.
   Qed.
 
 Theorem andb_eq_orb :
-  ∀ (b c : bool),
-  (andb b c = orb b c) →
+  forall (b c : bool),
+  (andb b c = orb b c) ->
   b = c.
 Proof.
   intros b c.
-  destruct b eqn:Eb.
-  - destruct c eqn:Ec.
-    + reflexivity.
-    + intros H. rewrite -> H. reflexivity.
-  - destruct c eqn:Ec.
-    + intros H. rewrite -> H. reflexivity.
-    + reflexivity.
-  Qed.
+  destruct b.
+  - simpl. intros H. rewrite -> H. reflexivity.
+  - simpl. intros H. rewrite -> H. reflexivity.
+Qed.
